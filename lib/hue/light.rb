@@ -139,6 +139,11 @@ module Hue
       json = JSON(Net::HTTP.get(URI.parse(base_url)))
       unpack(json)
     end
+    
+    def on?
+      self.refresh
+      @state['on']
+    end
 
   private
 
