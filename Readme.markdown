@@ -55,6 +55,18 @@ transition_time = 10*5 # Hue transition times are in 1/10 of a second.
 light.set_state({:color_temperature => 400}, transition_time)
 ```
 
+#### Sensors
+
+``` ruby
+sensor = client.sensors.first
+sensor.type
+# > :temperature
+sensor.temperature
+# > 26.58
+
+
+```
+
 #### Groups
 
 ``` ruby
