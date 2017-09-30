@@ -45,6 +45,23 @@ module Hue
         bs
       end
     end
+    
+    def temperature_sensors
+      bridge.temperature_sensors
+    end
+
+    def sensors
+      bridge.sensors
+    end
+
+    def add_sensors
+      bridge.add_sensors
+    end
+
+    def sensor(id)
+      id = id.to_s
+      sensors.select { |l| l.id == id }.first
+    end
 
     def lights
       bridge.lights

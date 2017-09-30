@@ -5,6 +5,7 @@ require 'hue/bridge'
 require 'hue/editable_state'
 require 'hue/translate_keys'
 require 'hue/light'
+require 'hue/sensor'
 require 'hue/group'
 require 'hue/scene'
 

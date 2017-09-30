@@ -139,7 +139,7 @@ module Hue
       json = JSON(Net::HTTP.get(URI.parse(base_url)))
       unpack(json)
     end
-    
+
     def on?
       self.refresh
       @state['on']
@@ -166,7 +166,7 @@ module Hue
       :alert => :alert,
       :effect => :effect,
       :color_mode => :colormode,
-      :reachable => :reachable,
+      :reachable => :reachable
     }
 
     def unpack(hash)

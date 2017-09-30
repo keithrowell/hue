@@ -67,8 +67,34 @@ module Hue
       json = get_configuration
       unpack(json)
       @lights = nil
+      @temperature_sensors = nil
+      @sensors = nil
       @groups = nil
       @scenes = nil
+    end
+    
+    def temperature_sensors
+      @temperature_sensors ||= begin
+        sensors.select do |sensor|
+          sensor.type == :temperature
+        end
+      end
+    end
+
+    def sensors
+      @sensors ||= begin
+        json = JSON(Net::HTTP.get(URI.parse(base_url)))
+        json['sensors'].map do |key, value|
+          Sensor.new(@client, self, key, value)
+        end
+      end
+    end
+
+    def add_sensors
+      uri = URI.parse("#{base_url}/sensors")
+      http = Net::HTTP.new(uri.host)
+      response = http.request_post(uri.path, nil)
+      (response.body).first
     end
 
     def lights
@@ -79,6 +105,8 @@ module Hue
         end
       end
     end
+
+
 
     def add_lights
       uri = URI.parse("#{base_url}/lights")
