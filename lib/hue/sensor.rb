@@ -120,6 +120,24 @@ module Hue
       end
     end
     
+    def presence?
+      self.refresh
+      begin
+        @state['presence']
+      rescue
+        nil
+      end
+    end
+    
+    def last_updated
+      self.refresh
+      begin
+        @state['lastupdated']
+      rescue
+        nil
+      end
+    end
+    
     def identifier
       @identifier
     end

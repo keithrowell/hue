@@ -49,6 +49,10 @@ module Hue
     def temperature_sensors
       bridge.temperature_sensors
     end
+    
+    def presence_sensors
+      bridge.presence_sensors
+    end
 
     def sensors
       bridge.sensors

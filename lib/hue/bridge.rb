@@ -68,6 +68,7 @@ module Hue
       unpack(json)
       @lights = nil
       @temperature_sensors = nil
+      @presence_sensors = nil
       @sensors = nil
       @groups = nil
       @scenes = nil
@@ -77,6 +78,14 @@ module Hue
       @temperature_sensors ||= begin
         sensors.select do |sensor|
           sensor.type == :temperature
+        end
+      end
+    end
+    
+    def presence_sensors
+      @presence_sensors ||= begin
+        sensors.select do |sensor|
+          sensor.type == :presence
         end
       end
     end
