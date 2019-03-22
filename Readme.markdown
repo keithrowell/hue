@@ -4,6 +4,8 @@ Work with Philips Hue light bulbs from Ruby.
 
 [![Code Climate](https://codeclimate.com/github/soffes/hue.png)](https://codeclimate.com/github/soffes/hue) [![Dependency Status](https://gemnasium.com/soffes/hue.png)](https://gemnasium.com/soffes/hue) [![Gem Version](https://badge.fury.io/rb/hue.png)](http://badge.fury.io/rb/hue)
 
+This project is forked from [soffes/hue](https://github.com/soffes/hue) and adds support for Hue motion detection sensors and the temperature sensors found inside those motion sensors. 
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -59,6 +61,32 @@ light.set_state({:color_temperature => 400}, transition_time)
 
 ``` ruby
 sensor = client.sensors.first
+sensor.type
+# > :temperature
+sensor.temperature
+# > 26.58
+
+
+```
+
+#### Presence Sensors
+
+``` ruby
+sensor = client.presence_sensors.first
+sensor.type
+# > :presence
+sensor.presence?
+# > true
+sensor.last_updated
+# > 2019-03-22 15:42:48 +1000
+
+
+```
+
+#### Temperature Sensors
+
+``` ruby
+sensor = client.temperature_sensors.first
 sensor.type
 # > :temperature
 sensor.temperature
